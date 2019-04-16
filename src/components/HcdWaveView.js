@@ -10,11 +10,11 @@ export class HcdWaveView extends Component {
     proportion: 0.5,//0-1
     surfaceWidth: 300,
     surfaceHeigth: 300,
-    backgroundColor: '#FF7800',
+    backgroundColor: '#D1EFF7',
     stroke: 'white',
     fill: 'white',
     strokeWidth: 2,
-    superViewBackgroundColor: "blue",
+    superViewBackgroundColor: "#68CAE6",
     type: 'dc' //ac:交流 dc:直流
   }
 
@@ -123,25 +123,15 @@ export class HcdWaveView extends Component {
 
     return <View style={{ backgroundColor: 'rgba(0,0,0,0.0)' }}>
       <ART.Surface width={this.surfaceWidth} height={this.surfaceHeigth} >
-        {this.artDrawBg()}
-        <ART.Shape d={leftLinePath} stroke="#FCEE5D" strokeWidth={2} fill={"red"} />
-        <ART.Shape d={rightLinePath} stroke="#FCEE5D" strokeWidth={2} fill={'red'} />
         <ART.Shape d={path} fill={linearGradient}/>
         {this.artDrawWave()}
         <ART.Text strokeWidth={1} 
           stroke="#FFFFFF" 
           alignment="center" 
           x={this.props.surfaceHeigth / 2} 
-          y={this.props.surfaceHeigth / 2 - 30} 
+          y={this.props.surfaceHeigth / 2 - 15} 
           fill="#FFFFFF"
           font={`30px "Helvetica Neue", "Helvetica", Arial`}>{this.props.powerPercent + '%'}</ART.Text>
-        <ART.Text strokeWidth={1} 
-          stroke="#FFFFFF" 
-          alignment="center" 
-          x={this.props.surfaceHeigth / 2} 
-          y={this.props.surfaceHeigth / 2 + 10} 
-          fill="#FFFFFF"
-          font={`12px "Helvetica Neue", "Helvetica", Arial`}>汽车当前电量</ART.Text>
       </ART.Surface>
     </View>
   }
@@ -275,7 +265,7 @@ export class HcdWaveView extends Component {
       linePath.arc(-2 * radius, 0, radius)
       linePath.close()
       return (
-        <ART.Shape d={linePath} strokeWidth={0} fill={'#b7e3fb'}/>
+        <ART.Shape d={linePath} strokeWidth={0} fill={'#68CAE6'}/>
       )
     } else {
       const linePath = new ART.Path()
@@ -284,7 +274,7 @@ export class HcdWaveView extends Component {
         .arc(0, -radius * 2, radius)
         .close();
       return (
-        <ART.Shape d={linePath} strokeWidth={0} fill={'#b7e3fb'}/>
+        <ART.Shape d={linePath} strokeWidth={0} fill={'#68CAE6'}/>
       )
     }
   }
